@@ -1,2 +1,2 @@
-jd2_project_week2
+simple webapp
 ==================

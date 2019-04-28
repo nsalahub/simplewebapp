@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<form action="#" th:action="@{/save}" th:object="${employee}" method="post">
+    <table>
+        <tr>
+            <td>FIRST NAME:</td>
+            <td><input type="text" th:field="*{firstName}"/></td>
+            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</td>
+        </tr>
+        <tr>
+            <td>LAST NAME:</td>
+            <td><input type="text" th:field="*{lastName}"/></td>
+            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>
+        </tr>
+        <tr>
+            <td>DEPARTMENT:</td>
+            <td><input type="text" th:field="*{departmentId}"/></td>
+            <td th:if="${#fields.hasErrors('departmentId')}" th:errors="*{departmentId}">Name Error</td>
+        </tr>
+        <tr>
+            <select th:field=" *{gender}">
+                <option th:value="MALE" th:text="MALE"></option>
+                <option th:value="FEMALE" th:text="FEMALE"></option>
+            </select>
+        <tr>
+        <tr>
+            <td>JOB TITLE:</td>
+            <td><input type="text" th:field="*{jobTitle}"/></td>
+            <td th:if="${#fields.hasErrors('departmentId')}" th:errors="*{departmentId}">Name Error</td>
+        </tr>
+            <td>
+                <button type="submit">Add</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<table>
+    <thead class="thead-dark">
+    <tr class="text-center">
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Department Id</th>
+        <th scope="col">Job Title</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Date of bird</th>
+    </tr>
+    </thead>
+    <tbody class="text-center">
+    <tr th:each="employee : ${employees}">
+            <td>
+                <input type="text" name="id" th:value="${employee.employeeId} ">
+            </td>
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.lastName}"></td>
+            <td th:text="${employee.departmentId}"></td>
+            <td th:text="${employee.jobTitle}"></td>
+            <td th:text="${employee.gender}"></td>
+            <td th:text="${employee.dateOfBirth}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
